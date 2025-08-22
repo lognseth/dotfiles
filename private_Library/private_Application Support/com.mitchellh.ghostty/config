@@ -1,0 +1,27 @@
+font-thicken=true
+font-feature=-liga
+font-size = 13
+font-family = Hack Nerd Font Mono Regular
+theme = light:catppuccin-latte,dark:Ghostty Default StyleDark
+# theme = light:GitHub-Light-High-Contrast,dark:GitHub-Dark-Default
+macos-icon = custom-style
+# macos-icon-frame = aluminum
+macos-icon-ghost-color = #4F0048
+macos-icon-screen-color = #DE92B8
+window-padding-x = 2,0
+window-inherit-working-directory = false
+macos-titlebar-style = tabs
+# macos-titlebar-style = transparent
+window-colorspace = "display-p3"
+copy-on-select=clipboard
+window-height=30
+window-width=110
+shell-integration-features = no-cursor
+cursor-style = bar
+background-opacity = 0.9
+background-blur = true
+keybind = shift+enter=text:\n
+macos-non-native-fullscreen = true
+window-save-state = never
+auto-update-channel = stable
+auto-update = download
