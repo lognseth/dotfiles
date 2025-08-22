@@ -1,0 +1,62 @@
+apiVersion: krew.googlecontainertools.github.com/v1alpha2
+kind: Plugin
+metadata:
+  name: auth-proxy
+spec:
+  homepage: https://github.com/int128/kauthproxy
+  shortDescription: Authentication proxy to a pod or service
+  description: |
+    This is a kubectl plugin to forward a local port to a pod or service via the authentication proxy.
+    It gets a token from the current credential plugin (e.g. aws-iam-authenticator or kubelogin).
+    Then it appends the authorization header to HTTP requests, like `authorization: Bearer token`.
+    All traffic is routed by the authentication proxy and port forwarder as follows:
+      [browser] -> [authentication proxy] -> [port forwarder] -> [pod]
+
+  caveats: |
+    You need to configure authentication in the kubeconfig.
+    See https://github.com/int128/kauthproxy for more.
+
+  version: v1.2.4
+  platforms:
+  - bin: kauthproxy
+    uri: https://github.com/int128/kauthproxy/releases/download/v1.2.4/kauthproxy_linux_amd64.zip
+    sha256: aed6eba1e88676f72426649259e60198e278f8c5c7208314483e2c744edecc87
+    selector:
+      matchLabels:
+        os: linux
+        arch: amd64
+  - bin: kauthproxy
+    uri: https://github.com/int128/kauthproxy/releases/download/v1.2.4/kauthproxy_linux_arm64.zip
+    sha256: fcb015f904052ca3207c3f388736511a3d8a1e775816d9334afcd3febcee23ca
+    selector:
+      matchLabels:
+        os: linux
+        arch: arm64
+  - bin: kauthproxy
+    uri: https://github.com/int128/kauthproxy/releases/download/v1.2.4/kauthproxy_linux_arm.zip
+    sha256: f9d75d7e95606871afcfa8fc534fd7f1e224f6413b69d75acf088509cc22644b
+    selector:
+      matchLabels:
+        os: linux
+        arch: arm
+  - bin: kauthproxy
+    uri: https://github.com/int128/kauthproxy/releases/download/v1.2.4/kauthproxy_darwin_amd64.zip
+    sha256: 84f8189f8371114302e900783e52b0150d51a8f73dbfce6fec87561eee776f7c
+    selector:
+      matchLabels:
+        os: darwin
+        arch: amd64
+  - bin: kauthproxy
+    uri: https://github.com/int128/kauthproxy/releases/download/v1.2.4/kauthproxy_darwin_arm64.zip
+    sha256: a936fd852ff76f762665d8728724da2845e6f2de1a2923dfdbb231fc1df4704f
+    selector:
+      matchLabels:
+        os: darwin
+        arch: arm64
+  - bin: kauthproxy.exe
+    uri: https://github.com/int128/kauthproxy/releases/download/v1.2.4/kauthproxy_windows_amd64.zip
+    sha256: 23707ed03c79e95081ec512540f3cf13f2e4bedb0186309f4fbbb02acf142ca0
+    selector:
+      matchLabels:
+        os: windows
+        arch: amd64

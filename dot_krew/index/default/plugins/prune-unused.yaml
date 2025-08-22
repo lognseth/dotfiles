@@ -1,0 +1,24 @@
+apiVersion: krew.googlecontainertools.github.com/v1alpha2
+kind: Plugin
+metadata:
+  name: prune-unused
+spec:
+  version: v0.7.0
+  platforms:
+  - selector:
+      matchExpressions:
+      - {key: os, operator: In, values: [darwin, linux]}
+    uri: https://github.com/FikaWorks/kubectl-plugins/archive/v0.7.0.zip
+    sha256: d6d429a938439810b13abed3ccf93a45f5aaca79276badfa9f64bc9f018219c4
+    files:
+    - from: kubectl-plugins-*/prune-unused/*
+      to: .
+    - from: kubectl-plugins-*/LICENSE
+      to: .
+    bin: kubectl-prune_unused.sh
+  shortDescription: Prune unused resources
+  description: |
+    Prune unused configmaps/secret resources from a given namespace. It
+    checks against all resources from mounted volumes, env and envFrom and
+    imagePullSecrets.
+  homepage: https://github.com/FikaWorks/kubectl-plugins#prune-unused

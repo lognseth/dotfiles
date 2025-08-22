@@ -1,0 +1,52 @@
+apiVersion: krew.googlecontainertools.github.com/v1alpha2
+kind: Plugin
+metadata:
+  name: conditioner
+spec:
+  version: v1.4.1
+  platforms:
+    - bin: kubectl-conditioner.exe
+      uri: https://github.com/devbytes-cloud/conditioner/releases/download/v1.4.1/conditioner_Windows_x86_64.zip
+      sha256: 96b3dd3678e2c83af5943878aab11b2dda8b17ed981620011a79afde42a02ac3
+      selector:
+        matchLabels:
+          os: windows
+          arch: amd64
+    - bin: kubectl-conditioner.exe
+      uri: https://github.com/devbytes-cloud/conditioner/releases/download/v1.4.1/conditioner_Windows_arm64.zip
+      sha256: 296db4a4a44acac4654890aeba882e7f27428a07d20af486dde1bb8f8a608d57
+      selector:
+        matchLabels:
+          os: windows
+          arch: arm64
+    - bin: kubectl-conditioner
+      uri: https://github.com/devbytes-cloud/conditioner/releases/download/v1.4.1/conditioner_Linux_x86_64.tar.gz
+      sha256: 791f8d41ee35817837bf0ff7f81976d8471aa112106b3bbebaa5ae4b74373d31
+      selector:
+        matchLabels:
+          os: linux
+          arch: amd64
+    - bin: kubectl-conditioner
+      uri: https://github.com/devbytes-cloud/conditioner/releases/download/v1.4.1/conditioner_Linux_arm64.tar.gz
+      sha256: f44c05eaedcf79a82883a57e7209a08a0cab0a2fc594bc8176e7e5e4bf4dd51a
+      selector:
+        matchLabels:
+          os: linux
+          arch: arm64
+    - bin: kubectl-conditioner
+      uri: https://github.com/devbytes-cloud/conditioner/releases/download/v1.4.1/conditioner_Darwin_x86_64.tar.gz
+      sha256: c10a3ad64e255f9e454c1d93170d63fa494fcab108f5a992a2a557273b72fb04
+      selector:
+        matchLabels:
+          os: darwin
+          arch: amd64
+    - bin: kubectl-conditioner
+      uri: https://github.com/devbytes-cloud/conditioner/releases/download/v1.4.1/conditioner_Darwin_arm64.tar.gz
+      sha256: 8a0f8694fbc511d4ebdafb686a9fe0ec29f8ec8bf385111e3675446156cac01e
+      selector:
+        matchLabels:
+          os: darwin
+          arch: arm64
+  shortDescription: Add, update, or remove conditions on Kubernetes nodes
+  homepage: https://github.com/devbytes-cloud/conditioner
+  description: Conditioner allows you to add, update, or remove conditions on Kubernetes nodes. It's a handy tool for cluster administrators to manage node status conditions effectively.

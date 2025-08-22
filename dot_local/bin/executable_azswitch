@@ -1,0 +1,96 @@
+#!/bin/zsh
+# Enhanced azswitch with automation
+# Save as /usr/local/bin/azswitch
+
+declare -A tenants=(
+    ["vdv"]="f2c432c9-a5e3-4fb7-9268-47254a82e990"
+    ["schell"]="1822f169-a766-4934-aff9-7c3481022bc2"
+    ["aas-intern"]="3e7b772d-28ed-4d79-87c1-ad77bdce872d"
+    ["adesso-group"]="3d355765-67d9-47cd-9c7a-bf31179f56eb"
+    ["adesso-frankfurt"]="54350251-54cf-46b7-8b12-b9741d44b1a3"
+    ["adesso-afp"]="5ce99769-8087-4252-ad32-5aa367181a45"
+    ["bos"]="b04d8b83-e451-47de-8a02-7d949af199ce"
+    ["vontobel"]="be22cb3f-afc0-4a25-8ee1-47ad88bc6db2"
+    ["ihk-kms"]="9ea13653-8230-4738-a716-8050eaa70771"
+    ["kelvion"]="77c3a1a5-3102-4516-9de3-810d6de04915"
+    ["loro"]="7b5acc40-4d40-4147-9aa0-4f08d943d9ff"
+    ["pipebending"]="a4e9a770-17f3-4b20-aaee-8cb537170e23"
+    ["synlab"]="7eb2069c-a8c3-46d4-b704-c17d63231d7d"
+    ["tollcollect"]="249e0e7c-089a-4170-a3ba-c31eb0645674"
+    ["autoexpo"]="1ce6fc8f-898e-4f6d-9831-1177bda9baee"
+    ["wallbe"]="e8bd4ad0-8137-4049-8a74-71426cdde849"
+    ["ihk"]="2c3bd968-e2a6-469f-87e6-36a92b2b4ce0"
+    ["sf"]="8d8217df-23a8-47d2-a2d5-7156cf5bb115"
+)
+
+# Function to extract device code from az login output
+extract_and_automate() {
+    local tenant_id=$1
+    local output_file=$(mktemp)
+    
+    echo "🚀 Starting automated Azure login..."
+    
+    # Run az login in background and capture output
+    az login --tenant $tenant_id --use-device-code 2>&1 | tee $output_file &
+    local az_pid=$!
+    
+    # Wait a moment for the device code to appear
+    sleep 3
+    
+    # Extract the device code from the output
+    local device_code=$(grep -o "enter the code [A-Z0-9]\{8,\}" $output_file | sed 's/enter the code //')
+    
+    if [[ -n "$device_code" ]]; then
+        echo "📋 Device code: $device_code"
+        
+        # Copy to clipboard
+        echo -n "$device_code" | pbcopy
+        echo "✅ Code copied to clipboard!"
+        
+        # Auto-open the browser
+        echo "🌐 Opening browser..."
+        open "https://microsoft.com/devicelogin"
+        
+        # Show a nice notification
+        osascript -e 'display notification "Device code copied to clipboard! Paste it in the browser." with title "Azure CLI Login"'
+        
+        echo ""
+        echo "🎯 Action required:"
+        echo "   1. Browser opened to https://microsoft.com/devicelogin"
+        echo "   2. Device code ($device_code) is in your clipboard"
+        echo "   3. Just paste (Cmd+V) and continue!"
+        echo ""
+    else
+        echo "❌ Could not extract device code automatically"
+    fi
+    
+    # Wait for the az login process to complete
+    wait $az_pid
+    
+    # Clean up
+    rm -f $output_file
+}
+
+# Main script logic
+if [[ -z "$1" ]]; then
+    echo "Usage: azswitch [tenant-alias]"
+    echo ""
+    echo "Available tenants:"
+    for alias in "${!tenants[@]}"; do
+        echo "  $alias"
+    done | sort
+    echo ""
+    echo "Current context:"
+    az account show --query "{name:name, tenantId:tenantId}" -o table 2>/dev/null || echo "Not logged in"
+    exit 1
+fi
+
+tenant_id=${tenants[$1]}
+if [[ -z "$tenant_id" ]]; then
+    echo "Unknown tenant: $1"
+    echo "Available tenants: ${!tenants[@]}"
+    exit 1
+fi
+
+echo "🔄 Switching to $1 (${tenant_id})..."
+extract_and_automate $tenant_id

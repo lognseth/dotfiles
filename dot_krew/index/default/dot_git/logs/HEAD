@@ -1,0 +1,3 @@
+0000000000000000000000000000000000000000 59432df1688a4ea17feb14579409afd8693bba81 Mikael Lognseth <mikael.lognseth@adesso-service.com> 1739435385 +0100	clone: from https://github.com/kubernetes-sigs/krew-index.git
+59432df1688a4ea17feb14579409afd8693bba81 59432df1688a4ea17feb14579409afd8693bba81 Mikael Lognseth <mikael.lognseth@adesso-service.com> 1739435387 +0100	reset: moving to @{upstream}
+59432df1688a4ea17feb14579409afd8693bba81 a653c02087495dcabb688751384948ae0364b33c Mikael Lognseth <mikael.lognseth@adesso-service.com> 1753168267 +0200	reset: moving to @{upstream}
