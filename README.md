@@ -3,9 +3,9 @@
 ## Setup
 
 ```bash
-brew install chezmoi
-chezmoi init --apply git@github.com:lognseth/dotfiles.git
-brew bundle --file="$HOME/Brewfile"
+git clone git@github.com:<username>/dotfiles.git
+cd dotfiles
+./bootstrap.sh
 ```
 
 ## Common commands
