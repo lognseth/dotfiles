@@ -1,0 +1,4 @@
+theme = light:Atom One Light,dark:Atom One Dark
+font-size=15
+keybind = global:cmd+^=toggle_quick_terminal
+macos-icon = xray
