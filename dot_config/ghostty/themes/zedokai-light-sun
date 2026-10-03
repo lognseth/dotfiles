@@ -1,0 +1,25 @@
+# Zedokai Light (Filter Sun) Custom Ghostty Theme
+background = #fcf9f2
+foreground = #433f38
+cursor-color = #fd9353
+selection-background = #e8e1d4
+selection-foreground = #433f38
+
+# Terminal Palette (Muted warm syntax for light backgrounds)
+palette = 0=#fcf9f2
+palette = 1=#d21e4e
+palette = 2=#438f53
+palette = 3=#967200
+palette = 4=#b65314
+palette = 5=#6756c3
+palette = 6=#008596
+palette = 7=#433f38
+palette = 8=#938d82
+palette = 9=#d21e4e
+palette = 10=#438f53
+palette = 11=#967200
+palette = 12=#b65314
+palette = 13=#6756c3
+palette = 14=#008596
+palette = 15=#2d2a24
+
