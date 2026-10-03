@@ -1,4 +1,32 @@
-theme = light:Atom One Light,dark:Atom One Dark
-font-size=15
-keybind = global:cmd+^=toggle_quick_terminal
+font-thicken=false
+font-feature=-liga
+font-size = 15
+font-family = JetBrainsMonoNerdFont-Regular
+# theme = light:Atom One Light,dark:Atom One Dark
+# theme = light:Ayu Light,dark:Ayu
+theme = dark:zedokai-darker-octagon,light:zedokai-light-sun
+palette = 6= #13C299 
+palette = 4= #24ACD4 
+palette = 2= #47d912 
+palette = 1= #f62b5a
+# macos-titlebar-style = tabs
+shell-integration-features = no-cursor
+cursor-style = block
+keybind = shift+enter=text:\n
+bell-features = title
+keybind = global:cmd+shift+opt+ctrl+^=toggle_quick_terminal
+window-width = 90
+window-height = 40
+window-theme = auto
+macos-titlebar-proxy-icon = hidden
+window-colorspace = display-p3
+background-opacity = 0.95
+background-blur-radius = 50
+quick-terminal-position = bottom
+cursor-style-blink = true
+notify-on-command-finish = unfocused
+notify-on-command-finish-action = no-bell,notify
+notify-on-command-finish-after = 30s
+cursor-color = #9B4F96
 macos-icon = xray
+scrollback-limit = 50000000
