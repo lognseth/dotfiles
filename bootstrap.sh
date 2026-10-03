@@ -1,4 +1,3 @@
-```bash
 #!/bin/bash
 set -e
 
@@ -17,4 +16,3 @@ chezmoi init --apply "$DOTFILES_REPO"
 if [[ -f "$HOME/Brewfile" ]]; then
   brew bundle --file="$HOME/Brewfile"
 fi
-```
