@@ -3,7 +3,7 @@
 ## Setup
 
 ```bash
-git clone git@github.com:<username>/dotfiles.git
+git clone git@github.com:lognseth/dotfiles.git
 cd dotfiles
 ./bootstrap.sh
 ```
