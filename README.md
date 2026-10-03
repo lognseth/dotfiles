@@ -3,59 +3,32 @@
 ## Setup
 
 ```bash
-git clone git@github.com:lognseth/dotfiles.git
-cd dotfiles
-./bootstrap.sh
+sh -c "$(curl -fsLS https://get.chezmoi.io)" -- init --apply git@github.com:lognseth/dotfiles.git
 ```
 
 ## Common commands
 
-Add a file:
-
 ```bash
+# Add/update a local file in chezmoi
 chezmoi add ~/.zshrc
-```
 
-Edit a managed file:
-
-```bash
+# Edit the chezmoi version
 chezmoi edit ~/.zshrc
-```
 
-See pending changes:
-
-```bash
+# See what chezmoi would change locally
 chezmoi diff
-```
 
-Apply changes:
-
-```bash
+# Apply changes
 chezmoi apply
-```
 
-Pull latest changes and apply:
-
-```bash
+# Pull latest changes and apply
 chezmoi update
-```
 
-Open the dotfiles repo:
-
-```bash
+# Open the dotfiles repo
 chezmoi cd
 ```
 
-Commit changes:
-
-```bash
-chezmoi cd
-git add .
-git commit -m "Update dotfiles"
-git push
-```
-
-Update the Brewfile:
+Update Brewfile:
 
 ```bash
 brew bundle dump --file="$HOME/Brewfile" --force
